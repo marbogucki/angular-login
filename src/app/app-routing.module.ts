@@ -4,6 +4,7 @@ import {LoginComponent} from './core/auth/login/login.component';
 import {RegisterComponent} from './core/auth/register/register.component';
 
 const routes: Routes = [
+  { path: 'home', loadChildren: './feature/home/home.module#HomeModule' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
