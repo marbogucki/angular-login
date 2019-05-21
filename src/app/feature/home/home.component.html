@@ -1,3 +1,16 @@
-<p>
-  home works!
-</p>
+<h2>Home</h2>
+
+<form [formGroup]="formProducts" (ngSubmit)="AddProducts()">
+
+    <div class="custom-control custom-checkbox" *ngFor="let event of events">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        [id]="'event-' + event.id"
+        (change)="addProduct(event)"
+      >
+      <label class="custom-control-label" [for]="'event-' + event.id">{{ event.name }}</label>
+    </div>
+
+  <button type="submit" class="btn btn-primary">Add to Basket</button>
+</form>
