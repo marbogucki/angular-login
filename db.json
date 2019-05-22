@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jan Kowalski",
+      "email": "jan.kowalski@test.pl"
+    },
+    {
+      "id": 2,
+      "name": "Piotr Nowak",
+      "email": "piotr.n@test.pl"
+    },
+    {
+      "id": 3,
+      "name": "Aleksandra Michalska",
+      "email": "ola.michalska@test.pl"
+    },
+    {
+      "id": 4,
+      "name": "Maksymilian Wojciechowski",
+      "email": "maksymilian.w@test.pl"
+    }
+  ]
+}

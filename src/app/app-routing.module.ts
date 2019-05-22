@@ -5,6 +5,7 @@ import {RegisterComponent} from './core/auth/register/register.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: './feature/home/home.module#HomeModule' },
+  { path: 'users', loadChildren: './feature/users/users.module#UsersModule' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
