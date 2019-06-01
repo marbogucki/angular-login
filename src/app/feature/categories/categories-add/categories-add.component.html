@@ -1,0 +1,10 @@
+<h2>Add Categpry</h2>
+
+<form  [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="test" class="form-control" id="name" placeholder="Name" formControlName="name">
+  </div>
+  <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Submit</button>
+  <button [routerLink]="['/categories']" class="btn btn-secondary">Cancel</button>
+</form>

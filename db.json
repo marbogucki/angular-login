@@ -44,11 +44,22 @@
     }
   ],
   "categories": [
-    { "id": 1, "name": "HTML" },
-    { "id": 2, "name": "CSS" },
-    { "id": 3, "name": "Java Script" },
-    { "id": 4, "name": "Angular" },
-    { "id": 5, "name": "React" }
+    {
+      "id": 1,
+      "name": "HTML"
+    },
+    {
+      "id": 4,
+      "name": "Angular"
+    },
+    {
+      "name": "CSS",
+      "id": 5
+    },
+    {
+      "name": "Java Script",
+      "id": 6
+    }
   ],
   "rooms": [
     {
