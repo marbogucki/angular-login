@@ -1,3 +1,5 @@
+<h2>Users List</h2>
+<br />
 <table class="table">
   <thead>
   <tr>
@@ -12,7 +14,9 @@
     <th scope="row">{{ key + 1 }}</th>
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
-    <td>actions</td>
+    <td>
+      <button [routerLink]="['/users', user.id]">Details</button>
+    </td>
   </tr>
   </tbody>
 </table>

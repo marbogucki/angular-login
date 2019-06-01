@@ -1,25 +1,9 @@
 {
   "users": [
-    {
-      "id": 1,
-      "name": "Jan Kowalski",
-      "email": "jan.kowalski@test.pl"
-    },
-    {
-      "id": 2,
-      "name": "Piotr Nowak",
-      "email": "piotr.n@test.pl"
-    },
-    {
-      "id": 3,
-      "name": "Aleksandra Michalska",
-      "email": "ola.michalska@test.pl"
-    },
-    {
-      "id": 4,
-      "name": "Maksymilian Wojciechowski",
-      "email": "maksymilian.w@test.pl"
-    }
+    { "id": 1, "name": "Jan Kowalski", "email": "jan.kowalski@test.pl", "age": 23, "position": "Manager" },
+    { "id": 2, "name": "Piotr Nowak", "email": "piotr.n@test.pl", "age": 46, "position": "Office Worker" },
+    { "id": 3, "name": "Aleksandra Michalska", "email": "ola.michalska@test.pl", "age": 31, "position": "Accountant" },
+    { "id": 4, "name": "Maksymilian Wojciechowski", "email": "maksymilian.w@test.pl", "age": 57, "position": "Worker" }
   ],
   "rooms": [
     { "id": 1, "name": "Kitchen", "floor": 0, "devices": [1, 2] },
