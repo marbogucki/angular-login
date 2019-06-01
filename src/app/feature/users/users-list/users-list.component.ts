@@ -21,4 +21,11 @@ export class UsersListComponent implements OnInit {
         (users: User[]) => this.users = users
       );
   }
+
+  removeUser(user: User) {
+    this.usersService.removeUser(user)
+      .subscribe(() => {
+        this.users = this.users.filter(item => item.id !== user.id);
+      });
+  }
 }
