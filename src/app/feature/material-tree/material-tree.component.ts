@@ -35,7 +35,6 @@ export class MaterialTreeComponent implements OnInit {
       ).subscribe(
       (data: RoomWithControllers[]) => {
         this.rooms = data;
-        console.log(data);
       }
     );
   }
@@ -50,12 +49,11 @@ export class MaterialTreeComponent implements OnInit {
 
   private getControllersByRoom(rooms: RoomBasic[]): Observable<RoomWithControllers[]> {
     return forkJoin(
-      rooms.map((room: RoomBasic) => {
-        console.log(room);
+      rooms.map((room: RoomWithControllers) => {
         return this.devicesService.getControllersByRoom(room.id)
           .pipe(
             map((controllers: DeviceController[]) => {
-              room['controllers'] = controllers;
+              room.controllers = controllers;
               return room;
             })
           );

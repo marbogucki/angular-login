@@ -2,6 +2,8 @@
   margin: 50px;
 }
 
+
+
 .apto-tree {
   ul, li {
     margin-top: 0;
@@ -10,7 +12,7 @@
   }
 
   &__node-container {
-    padding-left: 1.9rem;
+    padding-left: 15px;
     position: relative;
 
     mat-tree-node:last-child {
