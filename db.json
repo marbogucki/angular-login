@@ -1,15 +1,82 @@
 {
   "users": [
-    { "id": 1, "name": "Jan Kowalski", "email": "jan.kowalski@test.pl", "age": 23, "position": "Manager" },
-    { "id": 2, "name": "Piotr Nowak", "email": "piotr.n@test.pl", "age": 46, "position": "Office Worker" },
-    { "id": 3, "name": "Aleksandra Michalska", "email": "ola.michalska@test.pl", "age": 31, "position": "Accountant" },
-    { "id": 4, "name": "Maksymilian Wojciechowski", "email": "maksymilian.w@test.pl", "age": 57, "position": "Worker" }
+    {
+      "id": 1,
+      "name": "Jan Kowalski",
+      "email": "jan.kowalski@test.pl",
+      "age": 23,
+      "position": "Manager"
+    },
+    {
+      "id": 2,
+      "name": "Piotr Nowak",
+      "email": "piotr.n@test.pl",
+      "age": 46,
+      "position": "Office Worker"
+    },
+    {
+      "id": 3,
+      "name": "Aleksandra Michalska",
+      "email": "ola.michalska@test.pl",
+      "age": 31,
+      "position": "Accountant"
+    },
+    {
+      "id": 4,
+      "name": "Maksymilian Wojciechowski",
+      "email": "maksymilian.w@test.pl",
+      "age": 57,
+      "position": "Worker"
+    },
+    {
+      "name": "Adam Michalak",
+      "email": "adam.m@test.pl",
+      "age": 21,
+      "position": "Worker",
+      "id": 6
+    },
+    {
+      "name": "Monika Pawłowska",
+      "email": "monika@test.pl",
+      "age": 39,
+      "position": "Worker",
+      "id": 7
+    }
   ],
   "rooms": [
-    { "id": 1, "name": "Kitchen", "floor": 0, "devices": [1, 2] },
-    { "id": 2, "name": "Bedroom", "floor": 1, "devices": [] },
-    { "id": 3, "name": "Bathroom", "floor": 0, "devices": [2, 3] },
-    { "id": 4, "name": "Living Room", "floor": 0, "devices": [1, 4] }
+    {
+      "id": 1,
+      "name": "Kitchen",
+      "floor": 0,
+      "devices": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Bedroom",
+      "floor": 1,
+      "devices": []
+    },
+    {
+      "id": 3,
+      "name": "Bathroom",
+      "floor": 0,
+      "devices": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Living Room",
+      "floor": 0,
+      "devices": [
+        1,
+        4
+      ]
+    }
   ],
   "controllers": [
     {
@@ -18,10 +85,26 @@
       "model": "Honeywell Zigbee Model 2012014394395",
       "roomId": 1,
       "bindings": [
-        {"channel": "Left Button", "action": "Single Click", "result": "light-on"},
-        {"channel": "Left Button", "action": "Double Click", "result": "light-off"},
-        {"channel": "Right Button", "action": "Single Click", "result": ""},
-        {"channel": "Right Button", "action": "Double Click", "result": "light-on"}
+        {
+          "channel": "Left Button",
+          "action": "Single Click",
+          "result": "light-on"
+        },
+        {
+          "channel": "Left Button",
+          "action": "Double Click",
+          "result": "light-off"
+        },
+        {
+          "channel": "Right Button",
+          "action": "Single Click",
+          "result": ""
+        },
+        {
+          "channel": "Right Button",
+          "action": "Double Click",
+          "result": "light-on"
+        }
       ]
     },
     {
@@ -30,8 +113,16 @@
       "model": "Honeywell Wireless Model 596829382",
       "roomId": 2,
       "bindings": [
-        {"channel": "Left Button", "action": "Single Click", "result": "light-on"},
-        {"channel": "Right Button", "action": "Single Click", "result": "light-off"}
+        {
+          "channel": "Left Button",
+          "action": "Single Click",
+          "result": "light-on"
+        },
+        {
+          "channel": "Right Button",
+          "action": "Single Click",
+          "result": "light-off"
+        }
       ]
     },
     {

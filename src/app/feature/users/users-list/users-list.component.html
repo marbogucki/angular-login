@@ -1,5 +1,11 @@
 <h2>Users List</h2>
+
 <br />
+
+<button [routerLink]="['/users/add']" class="btn btn-primary">Add User</button>
+
+<hr />
+
 <table class="table">
   <thead>
   <tr>
@@ -15,7 +21,7 @@
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
     <td>
-      <button [routerLink]="['/users', user.id]">Details</button>
+      <button [routerLink]="['/users', user.id]" class="btn btn-warning">Details</button>
     </td>
   </tr>
   </tbody>
