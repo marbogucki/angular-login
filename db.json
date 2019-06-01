@@ -20,5 +20,42 @@
       "name": "Maksymilian Wojciechowski",
       "email": "maksymilian.w@test.pl"
     }
+  ],
+  "rooms": [
+    { "id": 1, "name": "Kitchen", "floor": 0, "devices": [1, 2] },
+    { "id": 2, "name": "Bedroom", "floor": 1, "devices": [] },
+    { "id": 3, "name": "Bathroom", "floor": 0, "devices": [2, 3] },
+    { "id": 4, "name": "Living Room", "floor": 0, "devices": [1, 4] }
+  ],
+  "controllers": [
+    {
+      "id": 1,
+      "name": "Honeywell Smarthome Controller",
+      "model": "Honeywell Zigbee Model 2012014394395",
+      "roomId": 1,
+      "bindings": [
+        {"channel": "Left Button", "action": "Single Click", "result": "light-on"},
+        {"channel": "Left Button", "action": "Double Click", "result": "light-off"},
+        {"channel": "Right Button", "action": "Single Click", "result": ""},
+        {"channel": "Right Button", "action": "Double Click", "result": "light-on"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Aqara Wireless Remote Switch-Double Rocker",
+      "model": "Honeywell Wireless Model 596829382",
+      "roomId": 2,
+      "bindings": [
+        {"channel": "Left Button", "action": "Single Click", "result": "light-on"},
+        {"channel": "Right Button", "action": "Single Click", "result": "light-off"}
+      ]
+    },
+    {
+      "id": 3,
+      "model": "Belkin Model 682938103",
+      "name": "Belkin WeMo",
+      "roomId": 1,
+      "bindings": []
+    }
   ]
 }

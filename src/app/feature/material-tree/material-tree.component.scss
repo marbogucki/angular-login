@@ -1,0 +1,55 @@
+.controllers {
+  margin: 50px;
+}
+
+.apto-tree {
+  ul, li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  &__node-container {
+    padding-left: 1.9rem;
+    position: relative;
+
+    mat-tree-node:last-child {
+      .apto-tree__node-item {
+        &::after {
+          top: -25px;
+        }
+      }
+    }
+  }
+
+  &__node-item {
+    position: relative;
+
+    &::after, &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: #4273d8;
+    }
+    &::after {
+      width: 1px;
+      height: 50px;
+    }
+
+    &::before {
+      width: 35px;
+      height: 1px;
+    }
+  }
+
+  &--invisible {
+    display: none;
+  }
+
+  &--default {
+    outline: none;
+  }
+
+  &--expand {
+  }
+}
