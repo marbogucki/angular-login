@@ -42,9 +42,9 @@ const localStorageAccess = ((key) => ({
   providedIn: 'root'
 })
 export class AuthService {
-  private token = new BehaviorSubject('');
+  private token$ = new BehaviorSubject('');
   private currentRoles: Observable<UserRoles[]> =
-    this.token.asObservable().pipe(map(() => jwt_decode<SystemToken>(localStorageAccess.get()).roles));
+    this.token$.asObservable().pipe(map(() => jwt_decode<SystemToken>(localStorageAccess.get()).roles));
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -56,7 +56,7 @@ export class AuthService {
       )
       .subscribe(({token}) => {
         localStorageAccess.set(token);
-        this.token.next(token);
+        this.token$.next(token);
 
         if (targetUrl) {
           this.router.navigateByUrl(targetUrl);
@@ -71,13 +71,21 @@ export class AuthService {
     return !!token && tokenIsValid(token) && !hasDateExpired(jwt_decode<SystemToken>(token).exp);
   }
 
+  isLogged$(): Observable<boolean> {
+    return this.token$.asObservable().pipe(map(() => this.isLogged()));
+  }
+
   areInRoles(roles: Array<UserRoles>): Observable<boolean> {
     return this.currentRoles.pipe(map(userRoles => userRoles.some(role => roles.includes(role))));
   }
 
+  getBearerToken(): string {
+    return `Bearer ${localStorageAccess.get()}`;
+  }
+
   logOut() {
-    this.token.next('');
     localStorageAccess.remove();
+    this.token$.next('');
     this.router.navigate(['/login']);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../auth/shared/auth.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -7,6 +8,7 @@ import {AuthService} from '../../auth/shared/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  isLogged$: Observable<boolean> = this.authService.isLogged$();
 
   constructor(private authService: AuthService) { }
 
@@ -16,5 +18,4 @@ export class NavComponent implements OnInit {
   logOut() {
     this.authService.logOut();
   }
-
 }
