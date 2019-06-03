@@ -8,10 +8,6 @@ export interface Room extends RoomBasic {
   devices: number[];
 }
 
-export interface RoomWithControllers extends RoomBasic {
-  controllers?: DeviceController[];
-}
-
 export interface DeviceController {
   id: number;
   name: string;

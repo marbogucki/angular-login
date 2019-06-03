@@ -5,6 +5,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { MaterialTreeRoutingModule } from './material-tree-routing.module';
 import { MaterialTreeComponent } from './material-tree.component';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
   declarations: [MaterialTreeComponent],
@@ -12,6 +13,7 @@ import { MaterialTreeComponent } from './material-tree.component';
     CommonModule,
     MatTreeModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MaterialTreeRoutingModule
   ]
 })
