@@ -23,12 +23,28 @@ type UserRoles = 'admin' | 'client';
 
 const hasDateExpired = (timeStamp: number) => Date.now() >= timeStamp * 1000;
 
+const tokenIsValid = token => {
+  try {
+    jwt_decode(token);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+const localStorageAccess = ((key) => ({
+  get: () => localStorage.getItem(key) || '',
+  set: (token: string) => localStorage.setItem(key, token),
+  remove: () => localStorage.removeItem(key)
+}))('jwt_token');
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private token = new BehaviorSubject('');
-  private currentRoles: Observable<UserRoles[]> = this.token.asObservable().pipe(map(token => jwt_decode<SystemToken>(token).roles));
+  private currentRoles: Observable<UserRoles[]> =
+    this.token.asObservable().pipe(map(() => jwt_decode<SystemToken>(localStorageAccess.get()).roles));
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -39,9 +55,8 @@ export class AuthService {
         map(result => result[0]),
       )
       .subscribe(({token}) => {
+        localStorageAccess.set(token);
         this.token.next(token);
-
-        jwt_decode<SystemToken>(token);
 
         if (targetUrl) {
           this.router.navigateByUrl(targetUrl);
@@ -52,11 +67,8 @@ export class AuthService {
   }
 
   isLogged(): boolean {
-    return !!this.token.value && !hasDateExpired(jwt_decode<SystemToken>(this.token.value).exp);
-  }
-
-  isLogged$(): Observable<boolean> {
-    return this.token.asObservable().pipe(map(token => !!token));
+    const token = localStorageAccess.get();
+    return !!token && tokenIsValid(token) && !hasDateExpired(jwt_decode<SystemToken>(token).exp);
   }
 
   areInRoles(roles: Array<UserRoles>): Observable<boolean> {
@@ -65,6 +77,7 @@ export class AuthService {
 
   logOut() {
     this.token.next('');
+    localStorageAccess.remove();
     this.router.navigate(['/login']);
   }
 }
