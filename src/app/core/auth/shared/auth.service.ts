@@ -4,9 +4,14 @@ import {map} from 'rxjs/operators';
 import {environment} from '../../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
 import {Router} from '@angular/router';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 interface SystemToken {
-  roles: string[];
+  roles: UserRoles[];
+  iat: number;
+  exp: number;
+  name: string;
+  sub: string;
 }
 
 interface LoginFormData {
@@ -14,12 +19,16 @@ interface LoginFormData {
   password: string;
 }
 
+type UserRoles = 'admin' | 'client';
+
+const hasDateExpired = (timeStamp: number) => Date.now() >= timeStamp * 1000;
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private token: string;
-  private currentRoles: string[];
+  private token = new BehaviorSubject('');
+  private currentRoles: Observable<UserRoles[]> = this.token.asObservable().pipe(map(token => jwt_decode<SystemToken>(token).roles));
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -30,8 +39,9 @@ export class AuthService {
         map(result => result[0]),
       )
       .subscribe(({token}) => {
-        this.token = token;
-        this.currentRoles = jwt_decode<SystemToken>(token).roles;
+        this.token.next(token);
+
+        jwt_decode<SystemToken>(token);
 
         if (targetUrl) {
           this.router.navigateByUrl(targetUrl);
@@ -42,10 +52,19 @@ export class AuthService {
   }
 
   isLogged(): boolean {
-    return !!this.token;
+    return !!this.token.value && !hasDateExpired(jwt_decode<SystemToken>(this.token.value).exp);
   }
 
-  isInRole(role: 'admin' | 'client'): boolean {
-    return this.currentRoles.includes(role);
+  isLogged$(): Observable<boolean> {
+    return this.token.asObservable().pipe(map(token => !!token));
+  }
+
+  areInRoles(roles: Array<UserRoles>): Observable<boolean> {
+    return this.currentRoles.pipe(map(userRoles => userRoles.some(role => roles.includes(role))));
+  }
+
+  logOut() {
+    this.token.next('');
+    this.router.navigate(['/login']);
   }
 }
