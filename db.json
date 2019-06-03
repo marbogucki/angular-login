@@ -1,4 +1,9 @@
 {
+  "login": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlcyI6WyJhZG1pbiIsImNsaWVudCJdfQ.pnrKEID4q7NTLoq9X4QsH9wtySH5Cse-_mn9txMcsJw"
+    }
+  ],
   "users": [
     {
       "id": 1,
