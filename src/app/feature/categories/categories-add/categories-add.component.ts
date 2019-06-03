@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
-import {CategoriesService} from '../categories.service';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-categories-add',
   templateUrl: './categories-add.component.html',
   styleUrls: ['./categories-add.component.scss']
 })
-export class CategoriesAddComponent implements OnInit {
+export class CategoriesAddComponent {
   categoryForm: FormGroup;
 
   constructor(
